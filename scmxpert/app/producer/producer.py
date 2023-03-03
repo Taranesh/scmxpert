@@ -1,43 +1,31 @@
 # pylint: disable=broad-except
-from ensurepip import bootstrap
-import socket    
-import json 
+"""
+importing packages
+"""
+import socket
 import os
-from pathlib import Path
 from dotenv import load_dotenv
 from kafka import KafkaProducer
 
-BASE_DIR = Path(__file__).resolve().parent
 load_dotenv()
 
-SOCKET_CONNECTION = socket.socket()
+socket_connection = socket.socket()
 HOST = os.getenv("HOST")
 PORT = os.getenv("PORT")             
-SOCKET_CONNECTION.connect((HOST, int(PORT)))
-BOOTSTRAP_SERVERS = "localhost:9092"
+socket_connection.connect((HOST, int(PORT)))
+bootstrap_servers =os.getenv("bootstrap_servers")
 
 
-PRODUCER = KafkaProducer(BOOTSTRAP_SERVERS=BOOTSTRAP_SERVERS, retries=5)
+producer = KafkaProducer(bootstrap_servers=bootstrap_servers, retries=5)
 
-topicName = "Taranesh"
+topicName = os.getenv("topic_name")
 
 while True:
     try:
-        DATA = SOCKET_CONNECTION.recv(70240)
-        # Check if data is not empty
+        data=socket_connection.recv(70240)
+        print(data)
+        producer.send(topicName, data)
 
-        # json_acceptable_string = data.replace("'", "\"")
-        # load_data = json.loads(json_acceptable_string)
-        # print(load_data)
-        # for data in load_data:
-        PRODUCER.send(topicName, DATA)
-
-    except json.JSONDecodeError as json_error:
-        # Invalid JSON data received when the JSON data received from the socket is
-        #  not in the correct format. We catch this exception and print an error message
-        print("Error decoding JSON data: ", json_error)
     except Exception as exception:
-        # Other exceptions catch-all exception that will handle any other exceptions that
-        # may occur during the execution of the code
-        print("Error occurred: ", exception)
-    SOCKET_CONNECTION.close()
+        print(exception)
+socket_connection.close()

@@ -22,5 +22,7 @@ class Settings:
     ALGORITHM = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES = 30 # in mins
     COOKIE_NAME = "access_token"
+    HOST = os.getenv("HOST")
+    PORT = (os.getenv("PORT"))
 
 SETTING = Settings()

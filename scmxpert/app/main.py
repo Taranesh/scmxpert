@@ -1,7 +1,7 @@
 # pylint: disable=no-name-in-module
 # pylint: disable=too-few-public-methods
 """
-this class has signup schema
+importing packages
 """
 
 
@@ -15,7 +15,7 @@ from routers import user, shipment, datastream
 
 
 load_dotenv()
-
+https://github.com/Taranesh/scmxpertlite.git
 # Create a FastAPI app instance
 
 APP = FastAPI(title=SETTING.TITLE,\

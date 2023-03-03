@@ -1,9 +1,5 @@
 # pylint: disable=too-few-public-methods
 from pydantic import BaseModel
-
-
-
-
 class User(BaseModel):
     """
     A Pydantic schema for a User

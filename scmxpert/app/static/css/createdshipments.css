@@ -514,15 +514,14 @@ rgb(0 0 0 / 51%)
 position: fixed;
 right: 0;
 bottom: 0;
-min-width: 100%;
-min-height: 100%;
 display: flex;
 /* border: 1px solid #babdc5; */
---width: 78rem;
---height: 590px;
+width: 75rem;
+height: 37rem;
+ 
 contain: strict;
-width: var(--width);
-block-size: var(--height);
+ 
+ 
 /* background-color: #ffffff; */
 background: url(/static/images/how-ship-international-package-B-1187991-Q421.webp) top center;
 background-repeat: no-repeat;
@@ -610,7 +609,7 @@ position: fixed;
 inset: 0;
 z-index: 900;
 transform: translateX(-100%);
-height: var(--height);
+height: 100rem;
 width: 15rem;
 background: #fff;
 transition: opacity 250ms ease, transform 250ms;
@@ -627,6 +626,8 @@ transition: opacity 300ms ease, transform 250ms ease;
 
 body:has(:checked) .main__content {
 background-color: #0004;
+height: 74rem;
+
 }
 
 body:has(:checked) .sidebar {

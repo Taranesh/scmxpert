@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/css/shipmentpage.css">
     <title>SCMXpert-shipment</title>
 </head>
+
 <body>
     <div class="container">
         <section>
@@ -181,6 +182,13 @@
         </main>
     </div>
     <script src="/static/js/shipmentpage.js"></script>
+    <script>
+        function blockSpecialChar(e) {
+            var k;
+            document.all ? k = e.keyCode : k = e.which;
+            return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+        }
+    </script>
 </body>
 
 </html>
